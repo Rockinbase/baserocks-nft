@@ -39,7 +39,6 @@ button:hover {
 
 img {
   height: 100%;
-  width: 100%;
   object-fit: cover;
 }
 svg {
@@ -144,9 +143,10 @@ h4 {
     background-position: 22% 0%;
   }
 }
+
 /* container */
 .app-container {
-  width: 100vw;
+  overflow-x: hidden;
 }
 .app-bg {
   background-image: url("./assets/bg.webp");
@@ -248,7 +248,9 @@ h4 {
   position: absolute;
   height: 100vh;
   width: 100vw;
+  opacity: 0.5;
   background-image: url("./assets/bg-plexus.webp");
+
   background-size: cover;
 }
 .plexus-grad {
@@ -285,7 +287,7 @@ h4 {
   width: 100%;
   color: var(--white);
   transition: all 0.5s ease 0s;
-  z-index: 5;
+  z-index: 10;
 }
 .header-button {
   display: flex;
@@ -302,8 +304,10 @@ h4 {
 }
 
 .header-links {
-  gap: 30px;
-  max-width: 650px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10%;
+  width: 50%;
 }
 .header-item {
   height: 100%;
@@ -326,7 +330,7 @@ h4 {
   gap: 10px;
 }
 .header-logo img {
-  height: 100%;
+  width: 100%;
 }
 .header-dark {
   background-color: #00000062;
@@ -394,6 +398,10 @@ h4 {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url("./assets/bg.webp");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 .hero-rock {
   position: absolute;
@@ -414,13 +422,37 @@ h4 {
   gap: 15px;
   z-index: 5;
 }
+.hero-description {
+  text-shadow: 1px 1px 10px var(--black);
+}
+/* CAROUSEL - GALLERY */
+.gallery-container {
+  position: relative;
+  z-index: 6;
+}
+.carousel {
+  padding: 2px;
+}
+.gallery-about {
+  padding-right: 3rem;
+  gap: 5rem;
+}
+.gallery-about h1 {
+  color: var(--gray);
+  background-color: var(--gray);
+  text-shadow: -1px -1px 0 var(--white), 1px -1px 0 var(--white),
+    -1px 1px 0 var(--white), 1px 1px 0 var(--white);
+}
+
+.carousel-container {
+  padding: 5%;
+  background-color: var(--gray);
+}
 
 /* ROADMAP */
 .roadmap-container {
-  align-items: start;
   gap: 1.3rem;
   z-index: 2;
-  height: 100vh;
 }
 .roadmap-item {
   padding: 2rem 2rem;
@@ -429,6 +461,8 @@ h4 {
   background-color: var(--black);
 }
 .roadmap-bg {
+  align-items: flex-start;
+  justify-content: space-evenly;
   padding: 3% 5%;
   background-color: var(--gray);
 }
@@ -464,9 +498,10 @@ h4 {
 .team-container {
   justify-content: space-around;
   margin: 0vh 0;
-  height: 70vh;
+
   gap: 50px;
-  padding: 0 5%;
+  padding: 5% 5%;
+  margin: 5% 0;
 }
 .team-container > div {
   max-width: 450px;
@@ -491,7 +526,9 @@ h4 {
 .partners-container {
   position: relative;
   height: 60vh;
+  width: 100vw;
   color: var(--blue);
+  z-index: 2;
 }
 .partners-container h1 {
   color: var(--blue);
@@ -500,10 +537,12 @@ h4 {
   position: absolute;
   height: calc(100% - 12px);
   width: calc(100% - 12px);
-  z-index: 0;
+  z-index: 1;
   padding: 2% 5%;
 }
-
+.partners-content {
+  z-index: 2;
+}
 .partners-container img {
   width: 100%;
 }

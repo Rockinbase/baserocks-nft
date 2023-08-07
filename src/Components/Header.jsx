@@ -57,7 +57,7 @@ const Header = () => {
           <div className="header-item jc-center jc-center">Roadmap</div>
           <div className="header-item jc-center">Gallery</div>
           <div className="header-item jc-center">Team</div>
-          <div className="header-item jc-center">Stake( Soon)</div>
+          <div className="header-item jc-center">Stake(Soon)</div>
           <Connect />
         </div>
       </div>

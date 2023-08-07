@@ -9,9 +9,9 @@ const Hero = () => {
           translateY={[-10, 10]}
           speed={5}
         >
-          <div className="h100 w100 plexus-grad"></div>
           <div className="plexus h100 w100" />
         </Parallax>
+        <div className="h100 w100 plexus-grad"></div>
         <Parallax
           className="parallax3 w100 jc-center"
           speed={5}

@@ -1,11 +1,13 @@
 import { Parallax } from "react-scroll-parallax";
-import TeamMember1 from "../assets/team-member-1.png";
-import TeamMember2 from "../assets/team-member-2.png";
+import TeamMember1 from "../assets/team-member-1.jpg";
+import TeamMember2 from "../assets/team-member-2.jpg";
+import TeamMember3 from "../assets/team-member-3.jpg";
+import TeamMember4 from "../assets/team-member-4.jpg";
 const Team = () => {
   return (
     <div className="team-container flex jc-center">
-      <div className="bg-grad2 flex  w100">
-        <div className="team-member flex-col   fstandard h100 w100">
+      <div className="bg-grad2 flex  h100 w100">
+        <div className="team-member flex-col   fstandard h100 ">
           <Parallax speed={5} translateY={[15, -15]} className="bg-grad2  w100">
             <img src={TeamMember1} />
           </Parallax>
@@ -17,13 +19,9 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <div className="bg-grad2 flex w100">
-        <div className="team-member flex-col  fstandard h100 w100">
-          <Parallax
-            speed={5}
-            translateY={[15, -15]}
-            className="bg-grad2 h100 w100"
-          >
+      <div className="bg-grad2 flex h100 w100">
+        <div className="team-member flex-col fstandard h100 ">
+          <Parallax speed={5} translateY={[15, -15]} className="bg-grad2  w100">
             <img src={TeamMember2} />
           </Parallax>
           <h2>HOLY-GHOST</h2>
@@ -34,20 +32,29 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <div className="bg-grad2 flex w100">
-        <div className="team-member flex-col  fstandard h100 w100">
-          <Parallax
-            speed={5}
-            translateY={[15, -15]}
-            className="bg-grad2 h100 w100"
-          >
-            <img src={TeamMember2} />
+      <div className="bg-grad2 flex h100 w100">
+        <div className="team-member flex-col fstandard h100 ">
+          <Parallax speed={5} translateY={[15, -15]} className="bg-grad2 w100">
+            <img src={TeamMember3} />
           </Parallax>
           <h2>BAZINGA</h2>
           <h4>3D Art Director</h4>
           <div className="finfo">
             He produced characters and accessories for animation, games,
             series/movies. An unrivaled designer. WEB 3.0 enthusiast.
+          </div>
+        </div>
+      </div>
+      <div className="bg-grad2 flex h100 w100">
+        <div className="team-member flex-col fstandard h100 ">
+          <Parallax speed={5} translateY={[15, -15]} className="bg-grad2 w100">
+            <img src={TeamMember4} />
+          </Parallax>
+          <h2>0xOliver</h2>
+          <h4>Blockchain Developer</h4>
+          <div className="finfo">
+            A Developer who specializes in Blockchain. He is an expert who gains
+            his expertise from the projects he has worked on before.
           </div>
         </div>
       </div>

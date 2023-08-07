@@ -7,12 +7,12 @@ import { Parallax } from "react-scroll-parallax";
 const Roadmap = () => {
   return (
     <div className="roadmap-container flex flex-se h100 w100 parallax3">
-      <div className="roadmap-bg flex flex-se h100 w100 parallax3 gap">
-        <Parallax className="parallax h100" speed={5} translateY={[0, 10]}>
+      <div className="roadmap-bg flex  h100 w100 parallax3 gap">
+        <Parallax className="parallax h100" speed={5} translateY={[0, 5]}>
           <div className=" w100  bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <BuildIcon />
-              <h2 className="w100">Phase I </h2>
+              <h2 className="w100">Creation</h2>
               <h4 className="w100">Building a Strong Community</h4>
               <p className="finfo">
                 In this initial phase, our primary focus is on fostering a
@@ -28,11 +28,11 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={2} translateY={[0, 25]}>
+        <Parallax className="parallax h100" speed={2} translateY={[0, 10]}>
           <div className="w100  bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <CollabIcon />
-              <h2 className="w100">Phase I </h2>
+              <h2 className="w100">Growth</h2>
               <h4 className="w100">Collaborations with Projects and DAOs</h4>
 
               <p className="finfo">
@@ -48,11 +48,11 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={4} translateY={[0, 25]}>
+        <Parallax className="parallax h100" speed={4} translateY={[0, 18]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <AirdropIcon />
-              <h2 className="w100">Phase II</h2>
+              <h2 className="w100">Earning </h2>
               <h4 className="w100">NFT Airdrop For all Holders</h4>
 
               <p className="finfo">
@@ -65,11 +65,11 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={3} translateY={[0, 55]}>
+        <Parallax className="parallax h100" speed={3} translateY={[0, 22]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <StakeIcon />
-              <h2 className="w100">Phase II </h2>
+              <h2 className="w100">Lock </h2>
               <h4 className="w100">Staking</h4>
 
               <p className="finfo">
@@ -82,20 +82,17 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={3} translateY={[0, 60]}>
+        <Parallax className="parallax h100" speed={3} translateY={[0, 30]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <RiseIcon />
-              <h2 className="w100">Phase III </h2>
+              <h2 className="w100">Community </h2>
               <h4 className="w100">Rise</h4>
 
               <p className="finfo">
                 The second phase of our BaseRock roadmap, titled “Rise”, will
                 offer rich experiences to its owners and will be constantly
-                updated. We will launch Base Rock after Base mainnet. After
-                launch, we will simultaneously list Base Rock on NFT markets
-                that support the Base network. We will reveal Mint details as we
-                get closer to Mainnet.
+                updated.
               </p>
             </div>
           </div>
