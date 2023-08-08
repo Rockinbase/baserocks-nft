@@ -342,7 +342,6 @@ h4 {
   gap: 10px;
 }
 .header-logo img {
-  width: min-content;
   height: 100%;
 }
 .header-logo:hover {
