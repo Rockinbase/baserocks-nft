@@ -1,8 +1,9 @@
 import { Parallax } from "react-scroll-parallax";
-import TeamMember1 from "../assets/team-member-1.jpg";
-import TeamMember2 from "../assets/team-member-2.jpg";
-import TeamMember3 from "../assets/team-member-3.jpg";
-import TeamMember4 from "../assets/team-member-4.jpg";
+import TeamMember1 from "../assets/team-member-1.webp";
+import TeamMember2 from "../assets/team-member-2.webp";
+import TeamMember3 from "../assets/team-member-3.webp";
+import TeamMember4 from "../assets/team-member-4.webp";
+import { ReactComponent as TwitterLogo } from "../assets/Icons/twitter-icon.svg";
 const Team = () => {
   return (
     <div className="team-container flex jc-center">
@@ -17,6 +18,13 @@ const Team = () => {
             A web 3.0 expert and consultant. Project manager for over 10 years.
             A passionate investor.
           </div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/etheroin"
+          >
+            <TwitterLogo className="fill-white" />
+          </a>
         </div>
       </div>
       <div className="bg-grad2 flex h100 w100">
@@ -30,6 +38,13 @@ const Team = () => {
             He has worked as an art director in various TV Series/Film projects,
             and he has led many projects in WEB 3.0 technology.
           </div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/holygh0st2"
+          >
+            <TwitterLogo className="fill-white" />
+          </a>
         </div>
       </div>
       <div className="bg-grad2 flex h100 w100">
@@ -43,6 +58,13 @@ const Team = () => {
             He produced characters and accessories for animation, games,
             series/movies. An unrivaled designer. WEB 3.0 enthusiast.
           </div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/bazingacall"
+          >
+            <TwitterLogo className="fill-white" />
+          </a>
         </div>
       </div>
       <div className="bg-grad2 flex h100 w100">
@@ -56,6 +78,13 @@ const Team = () => {
             A Developer who specializes in Blockchain. He is an expert who gains
             his expertise from the projects he has worked on before.
           </div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/0xOliveer"
+          >
+            <TwitterLogo className="fill-white" />
+          </a>
         </div>
       </div>
     </div>

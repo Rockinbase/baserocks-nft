@@ -51,7 +51,7 @@ const Header = () => {
     return (
       <div className={`header-container ${headerTheme}`}>
         <div className="header-logo">
-          <img src={baserockLogo} alt="finaleLogo"></img>
+          <img src={baserockLogo} alt="baseRockLogo"></img>
         </div>
         <div className="header-links  h100 flex ">
           <div className="header-item jc-center jc-center">Roadmap</div>

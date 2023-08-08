@@ -156,7 +156,7 @@ h4 {
   background-repeat: no-repeat;
 }
 .connect-container {
-  min-width: 200px;
+  min-width: 170px;
 }
 .mint-button {
   background-color: var(--light-blue);
@@ -277,6 +277,18 @@ h4 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#524f8d",endColorstr="#181b19",GradientType=1);
   z-index: 3;
 }
+
+.fill-white {
+  fill: var(--white);
+  width: min-content;
+  height: 20px;
+  margin-top: 10px;
+  transition: all 0.5s ease;
+}
+.fill-white:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
 /* HEADER ----------------------------------------------- */
 .header-container {
   position: fixed;
@@ -360,7 +372,7 @@ h4 {
   z-index: 5;
 }
 .mobile-header-container {
-  padding: 2.2vh 5%;
+  padding: 2.2vh 2%;
   height: 8vh;
   width: 100%;
   color: var(--white);
@@ -472,10 +484,10 @@ h4 {
   max-width: 350px;
 }
 .roadmap-container svg {
-  margin-bottom: 15px;
+  margin-bottom: 0.5rem;
 }
 .roadmap-container h2 {
-  margin-bottom: 8px;
+  margin-bottom: 0.3rem;
 }
 
 .roadmap-layer:nth-child(1) {
@@ -501,7 +513,6 @@ h4 {
   justify-content: space-around;
   margin: 0vh 0;
   z-index: 3;
-
   gap: 50px;
   padding: 5% 5%;
   margin: 5% 0;
@@ -528,21 +539,27 @@ h4 {
 
 .partners-container {
   position: relative;
-  height: 40vh;
+  height: 30vh;
   width: 100vw;
   color: var(--blue);
   z-index: 2;
 }
 .partners-container h1 {
+  font-size: calc(1vh + 2rem);
   text-shadow: 0px 0px 5px var(--black-op);
+  margin-bottom: 2rem;
 }
 .partners-inner-container {
   position: absolute;
   height: calc(100% - 12px);
   width: calc(100% - 12px);
   z-index: 1;
-  padding: 3% 15%;
+  padding: 3% 3%;
 }
+.partner-logos {
+  height: 10vh;
+}
+
 .partners-content {
   z-index: 2;
 }
@@ -598,4 +615,38 @@ h4 {
 .footer-social {
   fill: var(--white);
   height: 100%;
+}
+@media (max-width: 819px) {
+  .header-container {
+    padding: 4% 2% 4% 8%;
+  }
+  .header-logo {
+    height: auto;
+    width: 20%;
+  }
+
+  .carousel-container {
+    flex-direction: column;
+  }
+  .gallery-about {
+    gap: 2rem;
+    padding-bottom: 3vh;
+  }
+  .roadmap-bg {
+    flex-direction: column;
+    gap: 5vh;
+  }
+  .roadmap-bg svg {
+    height: 45px;
+    width: min-content;
+  }
+
+  .team-container {
+    flex-direction: column;
+    gap: 10vh;
+    margin-top: 18vh;
+  }
+  .partner-logos img {
+    margin: 10px;
+  }
 }

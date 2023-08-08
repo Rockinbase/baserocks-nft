@@ -14,34 +14,30 @@ const Partners = () => {
         <div className="jc-center flex-col h100 w100">
           <div className="partners-description flex-col jc-center  w100">
             <h1 className="partners-header fstrong ">Partners</h1>
-            <p className="finfo">
-              Vivamus in diam turpis. In condimentum maximus tristique. Maecenas
-              non laoreet odio.
-            </p>
           </div>
           <div className="flex-col  w100">
-            <div className="flex-se w100 ">
-              <div className="flex-col jc-center">
+            <div className="partner-logos flex-se w100 ">
+              <div className="flex-col jc-center h100">
                 <img src={baseNameService} />
                 {/* <p className="jc-center">Base Name Service</p> */}
               </div>
-              <div className="flex-col">
+              <div className="flex-col h100">
                 <img src={beagleSwap} />
                 {/* <p className="jc-center">Beagle Swap</p> */}
               </div>
-              <div className="flex-col">
+              <div className="flex-col h100">
                 <img src={omnisea} />
                 {/* <p className="jc-center">Omnisea</p> */}
               </div>
-              <div className="flex-col">
+              <div className="flex-col h100">
                 <img src={nftFeed} />
                 {/* <p className="jc-center">NFT Feed</p> */}
               </div>
-              <div className="flex-col">
+              <div className="flex-col h100">
                 <img src={innovaz} />
                 {/* <p className="jc-center">Innovaz</p> */}
               </div>
-              <div className="flex-col">
+              <div className="flex-col h100">
                 <img src={bullsOnBase} />
                 {/* <p className="jc-center">Base Pepe</p> */}
               </div>

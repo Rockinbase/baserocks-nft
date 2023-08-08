@@ -15,10 +15,13 @@ const Gallery = () => {
         <div className="gallery-about flex-col w100 h100">
           <h1 className="fstrong">About</h1>
           <div className="finfo">
-            BaseRock collection of 1,000 designed & randomly generated NFTs on
-            the Base Ecosystem . BaseRock holders will have access and
-            opportunities to participate in exclusive events, such as:
-            giveaways, bonus NFT claims & more.
+            BaseRock is a unique collection of 1000 pieces. Rocks reflect the
+            properties of the elements in our world, and these elements
+            determine the rarity of the rock. Rocks got a lot of attention on
+            all networks. As a team that believes in the power of the base
+            network, we are a project to contribute to the system. BaseRock
+            holders will have access and opportunities to participate in
+            exclusive events, such as: giveaways, bonus NFT claims & more.
           </div>
         </div>
         <div className="carousel bg-grad2 h100 w100">

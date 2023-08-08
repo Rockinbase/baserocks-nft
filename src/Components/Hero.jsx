@@ -21,11 +21,7 @@ const Hero = () => {
             <div className="hero-text fstrong">
               Limited edition Rock specially designed for Base chain
             </div>
-            <button className="mint-button">Soon !</button>
-            <div className="hero-description finfo">
-              Ut ultricies imperdiet sodales. Aliquam fringilla aliquam ex sit
-              amet elementum. Proin bibendum sollicitudin feugiat.
-            </div>
+            <button className="mint-button">Opensea</button>
           </div>
         </Parallax>
         <Parallax
