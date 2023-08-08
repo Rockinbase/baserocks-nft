@@ -24,34 +24,36 @@ const Gallery = () => {
             exclusive events, such as: giveaways, bonus NFT claims & more.
           </div>
         </div>
-        <div className="carousel bg-grad2 h100 w100">
-          <Carousel
-            showThumbs={false}
-            showStatus={false}
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={3000}
-          >
-            <div>
-              <img src={Rock1} alt="Image 1" />
-            </div>
-            <div>
-              <img src={Rock2} alt="Image 2" />
-            </div>
-            <div>
-              <img src={Rock3} alt="Image 3" />
-            </div>
-            <div>
-              <img src={Rock4} alt="Image 3" />
-            </div>
-            <div>
-              <img src={Rock5} alt="Image 3" />
-            </div>
-            <div>
-              <img src={Rock6} alt="Image 3" />
-            </div>
-            {/* Add more images as needed */}
-          </Carousel>
+        <div className="carousel-images-container w100 h100">
+          <div className="carousel bg-grad2">
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+            >
+              <div>
+                <img src={Rock1} alt="Image 1" />
+              </div>
+              <div>
+                <img src={Rock2} alt="Image 2" />
+              </div>
+              <div>
+                <img src={Rock3} alt="Image 3" />
+              </div>
+              <div>
+                <img src={Rock4} alt="Image 3" />
+              </div>
+              <div>
+                <img src={Rock5} alt="Image 3" />
+              </div>
+              <div>
+                <img src={Rock6} alt="Image 3" />
+              </div>
+              {/* Add more images as needed */}
+            </Carousel>
+          </div>
         </div>
       </div>
     </div>

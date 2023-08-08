@@ -24,7 +24,15 @@ const Connect = () => {
         <Web3Button />
       </WagmiConfig>
 
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      <Web3Modal
+        themeVariables={{
+          "--w3m-font-family":
+            "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto",
+          "--w3m-accent-color": "#1552f0",
+        }}
+        projectId={projectId}
+        ethereumClient={ethereumClient}
+      />
     </div>
   );
 };
