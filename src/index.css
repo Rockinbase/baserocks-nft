@@ -55,7 +55,8 @@ h2 {
 }
 h4 {
   color: var(--light-blue);
-  padding-bottom: 10px;
+  padding: 10px 0;
+
   border-bottom: 1px solid var(--light-blue-op);
 }
 
@@ -455,7 +456,7 @@ h4 {
   z-index: 2;
 }
 .roadmap-item {
-  padding: 2rem 2rem;
+  padding: 2rem 1.6rem;
   height: calc(100% - 10px);
   width: calc(100% - 1px);
   background-color: var(--black);
@@ -463,7 +464,7 @@ h4 {
 .roadmap-bg {
   align-items: flex-start;
   justify-content: space-evenly;
-  padding: 3% 5%;
+  padding: 0 5% 5% 5%;
   background-color: var(--gray);
 }
 
@@ -496,8 +497,10 @@ h4 {
 /* TEAM --------------------------------------------- */
 
 .team-container {
+  position: relative;
   justify-content: space-around;
   margin: 0vh 0;
+  z-index: 3;
 
   gap: 50px;
   padding: 5% 5%;
@@ -525,20 +528,20 @@ h4 {
 
 .partners-container {
   position: relative;
-  height: 60vh;
+  height: 40vh;
   width: 100vw;
   color: var(--blue);
   z-index: 2;
 }
 .partners-container h1 {
-  color: var(--blue);
+  text-shadow: 0px 0px 5px var(--black-op);
 }
 .partners-inner-container {
   position: absolute;
   height: calc(100% - 12px);
   width: calc(100% - 12px);
   z-index: 1;
-  padding: 2% 5%;
+  padding: 3% 15%;
 }
 .partners-content {
   z-index: 2;
@@ -553,7 +556,6 @@ h4 {
 }
 
 .partners-header {
-  text-shadow: 0px 0px 5px var(--black-op);
 }
 
 .partners-description {

@@ -45,6 +45,11 @@ const Roadmap = () => {
                 experiences that transcend individual projects, forming a
                 network of interconnected creativity and shared success.
               </p>
+              <h4 className="w100">Minting NFTs</h4>
+              <p className="finfo">
+                Finally BaseRock will travel to the universe of Base, becoming
+                mintable by our family
+              </p>
             </div>
           </div>
         </Parallax>

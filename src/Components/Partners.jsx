@@ -13,7 +13,7 @@ const Partners = () => {
       <div className="partners-inner-container  bg-grad flex-col jc-center w100 h100">
         <div className="jc-center flex-col h100 w100">
           <div className="partners-description flex-col jc-center  w100">
-            <h className="partners-header fstrong ">Partners</h>
+            <h1 className="partners-header fstrong ">Partners</h1>
             <p className="finfo">
               Vivamus in diam turpis. In condimentum maximus tristique. Maecenas
               non laoreet odio.
