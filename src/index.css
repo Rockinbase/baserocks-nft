@@ -345,6 +345,9 @@ h4 {
   width: min-content;
   height: 100%;
 }
+.header-logo:hover {
+  cursor: pointer;
+}
 .header-dark {
   background-color: #00000062;
   background-image: initial;
@@ -454,8 +457,13 @@ h4 {
 .gallery-about {
   gap: 5rem;
   max-width: 1000px;
+  text-align: center;
+}
+.gallery-about div {
+  font-size: 120%;
 }
 .gallery-about h1 {
+  font-size: 9vh;
   color: var(--gray);
   background-color: var(--gray);
   text-shadow: -1px -1px 0 var(--white), 1px -1px 0 var(--white),

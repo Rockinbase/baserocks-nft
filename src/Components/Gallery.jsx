@@ -13,7 +13,7 @@ const Gallery = () => {
     <div className="gallery-container">
       <div className="carousel-container flex h100">
         <div className="gallery-about flex-col w100 h100">
-          <h1 className="fstrong">About</h1>
+          <h1 className="fstrong jc-center">About</h1>
           <div className="finfo">
             BaseRock is a unique collection of 1000 pieces. Rocks reflect the
             properties of the elements in our world, and these elements

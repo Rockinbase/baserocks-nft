@@ -12,7 +12,7 @@ const Team = () => {
           <Parallax speed={5} translateY={[15, -15]} className="bg-grad2  w100">
             <img src={TeamMember1} />
           </Parallax>
-          <h2>BEACON AKHENATON</h2>
+          <h2>Beacon Akhenaton</h2>
           <h4>Community Head</h4>
           <div className="finfo">
             A web 3.0 expert and consultant. Project manager for over 10 years.
@@ -32,7 +32,7 @@ const Team = () => {
           <Parallax speed={5} translateY={[15, -15]} className="bg-grad2  w100">
             <img src={TeamMember2} />
           </Parallax>
-          <h2>HOLY-GHOST</h2>
+          <h2>Holy-Ghost</h2>
           <h4>Head of Operations</h4>
           <div className="finfo">
             He has worked as an art director in various TV Series/Film projects,
@@ -52,7 +52,7 @@ const Team = () => {
           <Parallax speed={5} translateY={[15, -15]} className="bg-grad2 w100">
             <img src={TeamMember3} />
           </Parallax>
-          <h2>BAZINGA</h2>
+          <h2>Bazinga</h2>
           <h4>3D Art Director</h4>
           <div className="finfo">
             He produced characters and accessories for animation, games,

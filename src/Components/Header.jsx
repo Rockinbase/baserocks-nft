@@ -60,7 +60,10 @@ const Header = () => {
   const desktopHeader = () => {
     return (
       <div className={`header-container ${headerTheme}`}>
-        <div className="header-logo">
+        <div
+          onClick={() => scrollToElement("hero-container")}
+          className="header-logo"
+        >
           <img src={baserockLogo} alt="baseRockLogo" />
         </div>
         <div className="header-links h100 flex">
