@@ -60,7 +60,7 @@ h4 {
 }
 
 .bg-grad {
-  background: linear-gradient(316deg, #1552f0, #bacdf9, #9db7f8);
+  background: linear-gradient(316deg, #1552f0, #bdd0fc, #6d93f6);
   background-size: 600% 600%;
 
   -webkit-animation: grad-rotate 10s ease infinite;
@@ -102,7 +102,7 @@ h4 {
   }
 }
 .bg-grad2 {
-  background: linear-gradient(316deg, #1552f0, #f1f5fe, #9db7f8);
+  background: linear-gradient(316deg, #1552f0, #b5c9f9, #9db7f8);
   background-size: 600% 600%;
 
   -webkit-animation: grad-rotate 15s ease infinite;

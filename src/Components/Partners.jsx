@@ -9,8 +9,8 @@ import omnisea from "../assets/partner-omnisea.webp";
 
 const Partners = () => {
   return (
-    <div className="partners-container jc-center h100 w100 bg-grad">
-      <div className="partners-inner-container  bg-grad2 flex-col jc-center w100 h100">
+    <div className="partners-container jc-center h100 w100 bg-grad2">
+      <div className="partners-inner-container  bg-grad flex-col jc-center w100 h100">
         <div className="jc-center flex-col h100 w100">
           <div className="partners-description flex-col jc-center  w100">
             <h className="partners-header fstrong ">Partners</h>

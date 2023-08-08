@@ -28,7 +28,7 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={2} translateY={[0, 10]}>
+        <Parallax className="parallax h100" speed={2} translateY={[0, 20]}>
           <div className="w100  bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <CollabIcon />
@@ -48,7 +48,7 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={4} translateY={[0, 18]}>
+        <Parallax className="parallax h100" speed={4} translateY={[0, 40]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <AirdropIcon />
@@ -65,7 +65,7 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={3} translateY={[0, 22]}>
+        <Parallax className="parallax h100" speed={3} translateY={[0, 60]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <StakeIcon />
@@ -82,7 +82,7 @@ const Roadmap = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax className="parallax h100" speed={3} translateY={[0, 30]}>
+        <Parallax className="parallax h100" speed={3} translateY={[0, 100]}>
           <div className=" w100 bg-grad2 border roadmap-layer">
             <div className="roadmap-item flex-col w100 h100 border">
               <RiseIcon />
