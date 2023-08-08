@@ -4,6 +4,7 @@ import { ReactComponent as RiseIcon } from "../assets/Icons/Rise.svg";
 import { ReactComponent as BuildIcon } from "../assets/Icons/Build.svg";
 import { ReactComponent as StakeIcon } from "../assets/Icons/Stake.svg";
 import { Parallax } from "react-scroll-parallax";
+
 const Roadmap = () => {
   return (
     <div className="roadmap-container flex flex-se h100 w100 parallax3">

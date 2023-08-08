@@ -634,6 +634,8 @@ h4 {
   }
   .roadmap-bg {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5vh;
   }
   .roadmap-bg svg {

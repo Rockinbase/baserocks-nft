@@ -1,8 +1,9 @@
+import React, { useEffect, useState, useRef } from "react";
+import { scroller } from "react-scroll";
+import { ReactComponent as MenuIcon } from "../assets/Icons/menu-icon.svg";
 import baserockLogo from "../assets/baserock-logo.webp";
 import Connect from "./Connect";
-import { useEffect, useState, useRef } from "react";
-
-import { ReactComponent as MenuIcon } from "../assets/Icons/menu-icon.svg";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(window.scrollY);
@@ -47,16 +48,40 @@ const Header = () => {
     };
   }, []);
 
+  const scrollToElement = (elementId) => {
+    scroller.scrollTo(elementId, {
+      smooth: true,
+      offset: -100,
+      duration: 800,
+    });
+    setIsMobileSidebarOpen(false);
+  };
+
   const desktopHeader = () => {
     return (
       <div className={`header-container ${headerTheme}`}>
         <div className="header-logo">
-          <img src={baserockLogo} alt="baseRockLogo"></img>
+          <img src={baserockLogo} alt="baseRockLogo" />
         </div>
-        <div className="header-links  h100 flex ">
-          <div className="header-item jc-center jc-center">Roadmap</div>
-          <div className="header-item jc-center">Gallery</div>
-          <div className="header-item jc-center">Team</div>
+        <div className="header-links h100 flex">
+          <div
+            className="header-item jc-center jc-center"
+            onClick={() => scrollToElement("roadmap-container")}
+          >
+            Roadmap
+          </div>
+          <div
+            className="header-item jc-center"
+            onClick={() => scrollToElement("gallery-container")}
+          >
+            Gallery
+          </div>
+          <div
+            className="header-item jc-center"
+            onClick={() => scrollToElement("team-container")}
+          >
+            Team
+          </div>
           <div className="header-item jc-center">Stake(Soon)</div>
           <Connect />
         </div>
@@ -69,9 +94,9 @@ const Header = () => {
       <div className={`header-container ${headerTheme}`}>
         <div className="header-logo">
           <a className="menu-icon" onClick={() => setIsMobileSidebarOpen(true)}>
-            <MenuIcon></MenuIcon>
+            <MenuIcon />
           </a>
-          <img src={baserockLogo} alt="finaleLogo"></img>
+          <img src={baserockLogo} alt="finaleLogo" />
         </div>
         <div
           ref={sideBarRef}
@@ -80,14 +105,28 @@ const Header = () => {
           }`}
         >
           <div className="mobile-header-logo">
-            <img src={baserockLogo} alt="finaleLogo"></img>
+            <img src={baserockLogo} alt="finaleLogo" />
           </div>
-          <div className="mobile-header-item">Roadmap</div>
-          <div className="mobile-header-item">Gallery</div>
-          <div className="mobile-header-item">Team</div>
+          <div
+            className="mobile-header-item"
+            onClick={() => scrollToElement("roadmap-container")}
+          >
+            Roadmap
+          </div>
+          <div
+            className="mobile-header-item"
+            onClick={() => scrollToElement("gallery-container")}
+          >
+            Gallery
+          </div>
+          <div
+            className="mobile-header-item"
+            onClick={() => scrollToElement("team-container")}
+          >
+            Team
+          </div>
           <div className="mobile-header-item">Stake(Soon)</div>
         </div>
-
         <Connect />
       </div>
     );
