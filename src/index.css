@@ -633,6 +633,9 @@ h4 {
   .gallery-about {
     padding: 5%;
   }
+  .hero-text {
+    opacity: 0;
+  }
   .carousel-container {
     flex-direction: column;
   }
