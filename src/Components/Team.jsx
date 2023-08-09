@@ -18,13 +18,6 @@ const Team = () => {
             A web 3.0 expert and consultant. Project manager for over 10 years.
             A passionate investor.
           </div>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/etheroin"
-          >
-            <TwitterLogo className="fill-white" />
-          </a>
         </div>
       </div>
       <div className="bg-grad2 flex h100 w100">

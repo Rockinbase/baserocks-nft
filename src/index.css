@@ -164,6 +164,7 @@ h4 {
   transition: all 0.2s ease-in-out;
 }
 .mint-button:hover {
+  cursor: not-allowed;
   background-color: var(--blue);
   color: var(--white);
 }
