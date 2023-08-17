@@ -164,10 +164,34 @@ h4 {
   transition: all 0.2s ease-in-out;
 }
 .mint-button:hover {
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
   background-color: var(--blue);
   color: var(--white);
 }
+.mint-button:hover svg {
+  fill: var(--white);
+}
+.loading,
+.icon-color {
+  fill: var(--blue);
+  width: 100%;
+  padding: 5px;
+  animation: rotate 2s infinite linear;
+}
+.icon-white {
+  fill: var(--white);
+  padding: 5px;
+  animation: rotate 2s infinite linear;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* UTILS */
 .flex {
   display: flex;
@@ -438,6 +462,10 @@ h4 {
   gap: 15px;
   z-index: 5;
 }
+.hero-main .connect-container {
+  align-items: left;
+  justify-content: left;
+}
 .hero-description {
   text-shadow: 1px 1px 10px var(--black);
 }
@@ -554,9 +582,10 @@ h4 {
 .partners-container {
   position: relative;
   height: 30vh;
-  width: 100vw;
+
   color: var(--blue);
   z-index: 2;
+  overflow-x: hidden;
 }
 .partners-container h1 {
   font-size: calc(1vh + 2rem);

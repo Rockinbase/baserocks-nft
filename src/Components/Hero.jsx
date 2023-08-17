@@ -1,4 +1,5 @@
 import HeroRock from "../assets/hero-rock.webp";
+import MintBox from "./MintBox";
 import { Parallax } from "react-scroll-parallax";
 const Hero = () => {
   return (
@@ -21,7 +22,7 @@ const Hero = () => {
             <div className="hero-text fstrong">
               Limited edition Rock specially designed for Base chain
             </div>
-            <button className="mint-button">Opensea</button>
+            <MintBox />
           </div>
         </Parallax>
         <Parallax

@@ -9,21 +9,43 @@ import Partners from "./Components/Partners";
 import Gallery from "./Components/Gallery";
 import Footer from "./Components/Footer";
 
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from "@web3modal/ethereum";
+import { Web3Modal } from "@web3modal/react";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { base, baseGoerli } from "wagmi/chains";
+
 function App() {
+  const chains = [base, baseGoerli];
+  const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID;
+  console.log(projectId);
+  const { publicClient } = configureChains(chains, [
+    w3mProvider({ projectId }),
+  ]);
+  const wagmiConfig = createConfig({
+    autoConnect: true,
+    connectors: w3mConnectors({ projectId, chains }),
+    publicClient,
+  });
   return (
     <>
-      <Header />
-      <ParallaxProvider>
-        <div className="app-container">
-          <Hero />
-          <Gallery />
-          <Roadmap />
-          <Team />
-        </div>
+      <WagmiConfig config={wagmiConfig}>
+        <Header />
+        <ParallaxProvider>
+          <div className="app-container">
+            <Hero />
+            <Gallery />
+            <Roadmap />
+            <Team />
+          </div>
 
-        <Partners />
-      </ParallaxProvider>
-      <Footer />
+          <Partners />
+          <Footer />
+        </ParallaxProvider>
+      </WagmiConfig>
     </>
   );
 }
