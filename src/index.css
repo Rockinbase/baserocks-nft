@@ -158,10 +158,12 @@ h4 {
 .connect-container {
   min-width: 170px;
 }
+
 .mint-button {
   background-color: var(--light-blue);
   color: var(--black);
   transition: all 0.2s ease-in-out;
+  /* margin-bottom: 15px; */
 }
 .mint-button:hover {
   /* cursor: not-allowed; */
@@ -170,6 +172,11 @@ h4 {
 }
 .mint-button:hover svg {
   fill: var(--white);
+}
+.counter-button {
+  font-size: larger;
+  max-width: 50px;
+  margin: 0 25px;
 }
 .loading,
 .icon-color {

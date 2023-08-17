@@ -23,7 +23,7 @@ const MintBox = () => {
     functionName: `totalSupply`,
     watch: true,
   });
-  console.log(isConnected);
+
   const renderChangeChains = () => {
     return <ChangeChains />;
   };

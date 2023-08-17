@@ -2,8 +2,9 @@ import {
   useContractWrite,
   usePrepareContractWrite,
   useContractRead,
+  useWaitForTransaction,
+  useAccount,
 } from "wagmi";
-import { useAccount } from "wagmi";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -30,6 +31,7 @@ const app = initializeApp(firebaseConfig);
 const Mint = () => {
   const [proof, setProof] = useState("");
   const [error, setError] = useState("");
+  const [mintCount, setMintCount] = useState(1);
 
   const { address, isConnecting, isDisconnected, isConnected } = useAccount();
 
@@ -63,6 +65,20 @@ const Mint = () => {
     functionName: `${AppConfig.activeMintingClass}Enabled`,
     watch: true,
   });
+  const {
+    data: maxPerClass,
+    isError: isMaxPerClassError,
+    isLoading: isMaxPerClassLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `maxPer${
+      AppConfig.activeMintingClass == "whitelist"
+        ? "Wl"
+        : AppConfig.activeMintingClass.charAt(0).toUpperCase() +
+          AppConfig.activeMintingClass.slice(1)
+    }`,
+  });
 
   //   Read Mint Price
   const {
@@ -75,21 +91,40 @@ const Mint = () => {
     functionName: `${AppConfig.activeMintingClass}Price`,
   });
 
+  // minting tx
   const { config } = usePrepareContractWrite({
     address: AppConfig.contractAddress,
     abi: AppConfig.abi,
     functionName: AppConfig.activeFunctionName,
-    args: [[...proof], 1],
-    value: price,
+    args:
+      AppConfig.activeMintingClass == "public"
+        ? [mintCount]
+        : [[...proof], mintCount],
+    value: BigInt(isPriceLoading ? "" : price) * BigInt(mintCount),
     onError(error) {
-      //   if (proof.length == 0) return;
-      //   console.log("Error", error);
       setError(error.message);
     },
   });
-  //   console.log("mesage->", error);
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
+  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  // Track tx
+  const {
+    data: watchTx,
+    isError: isWaitTxError,
+    isLoading: isWaitTxLoading,
+  } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  //   Cut error message string
+  function cutString(inputString) {
+    const dotIndex = inputString.indexOf(".");
+    if (dotIndex !== -1) {
+      return inputString.substring(0, dotIndex);
+    } else {
+      return inputString;
+    }
+  }
   const renderMintButton = () => {
     if (!mintingStatus) {
       return (
@@ -98,31 +133,71 @@ const Mint = () => {
         </button>
       );
     }
-    if (isLoading || isMintingStatusLoading) {
+    if (
+      isLoading ||
+      isMintingStatusLoading ||
+      isPriceLoading ||
+      isWaitTxLoading
+    ) {
       return (
         <button disabled={true} className="mint-button">
           <LoadingIcon />
         </button>
       );
     }
-    if (!proof) {
+    if (!proof && AppConfig.activeMintingClass != "public") {
       return (
         <button disabled={true} className="mint-button">
-          {` Not ${AppConfig.activeMintingClass}`}
+          {` Not ${AppConfig.activeMintingClass.toUpperCase()}`}
         </button>
       );
     } else {
       return (
-        <button onClick={() => write?.()} className="mint-button">
-          Mint
-        </button>
+        <>
+          <button onClick={() => write?.()} className="mint-button">
+            Mint
+          </button>
+        </>
       );
     }
   };
 
   //   useEffect(() => {}), [isLoading];
+  const handleMintCount = (newMintCount) => {
+    if (newMintCount > 0 && newMintCount <= maxPerClass) {
+      setMintCount(newMintCount);
+    }
+  };
 
-  return <>{renderMintButton()}</>;
+  return (
+    <>
+      <div
+        className="flex 
+    "
+      >
+        {renderMintButton()}
+        <button
+          onClick={() => handleMintCount(mintCount + 1)}
+          className="counter-button"
+        >
+          +
+        </button>
+        {mintCount}
+        <button
+          onClick={() => handleMintCount(mintCount - 1)}
+          className="counter-button"
+        >
+          -
+        </button>
+      </div>
+      <div className="fstandard">
+        {" "}
+        {error ? `⚠️ ${cutString(error)}` : ""}
+        {!isSuccess ? "Error While Minting !" : ""}{" "}
+        {isSuccess ? ` Transaction Succesful !` : ""}
+      </div>
+    </>
+  );
 };
 
 export default Mint;
