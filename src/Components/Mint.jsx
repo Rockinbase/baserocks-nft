@@ -5,7 +5,7 @@ import {
 } from "wagmi";
 import { useAccount } from "wagmi";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import AppConfig from "../../config.json";
 
