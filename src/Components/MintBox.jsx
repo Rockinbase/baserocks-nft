@@ -46,14 +46,17 @@ const MintBox = () => {
   return (
     <>
       {renderResult()}
+
       {isConnected ? (
         isTotalSupplyLoading || isTotalSupplyError ? (
-          <LoadingIcon className="icon-white" />
+          <>
+            <LoadingIcon className="icon-white" />
+          </>
         ) : (
-          <div>{`${totalSupply} / 1000 Rocks Minted !`}</div>
+          <div className="fbig">{`${totalSupply} / 1000 Rocks Minted !`}</div>
         )
       ) : (
-        ""
+        <div className="fbig ">Connect Your Wallet to Mint Your Rock !</div>
       )}
     </>
   );

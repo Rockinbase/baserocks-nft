@@ -119,6 +119,13 @@ const Mint = () => {
   //   Cut error message string
   function cutString(inputString) {
     const dotIndex = inputString.indexOf(".");
+    const regex =
+      /The contract function "[^"]+" reverted with the following reason:\n(.*?)\n/;
+    const match = inputString.match(regex);
+    if (match && match[1]) {
+      const extractedString = match[1];
+      return extractedString;
+    }
     if (dotIndex !== -1) {
       return inputString.substring(0, dotIndex);
     } else {
@@ -172,7 +179,7 @@ const Mint = () => {
   return (
     <>
       <div
-        className="flex 
+        className="flex mint-button-container
     "
       >
         {renderMintButton()}
@@ -182,7 +189,7 @@ const Mint = () => {
         >
           +
         </button>
-        {mintCount}
+        <div className="fstandard jc-center">{mintCount}</div>
         <button
           onClick={() => handleMintCount(mintCount - 1)}
           className="counter-button"
@@ -190,10 +197,15 @@ const Mint = () => {
           -
         </button>
       </div>
-      <div className="fstandard">
-        {" "}
-        {error ? `⚠️ ${cutString(error)}` : ""}
-        {!isSuccess ? "Error While Minting !" : ""}{" "}
+      {proof ? (
+        <div className="color-green">{`You are the ${AppConfig.activeMintingClass.toUpperCase()}`}</div>
+      ) : (
+        <div className="color-red">{`You are not on ${AppConfig.activeMintingClass.toUpperCase()} :/`}</div>
+      )}
+      <div className="error-box fstandard">
+        <span className="color-red">⚠️</span>
+        {error ? `${cutString(error)}` : ""}
+        {watchTx?.status == "reverted" ? "⚠️ Error While Minting !" : ""}{" "}
         {isSuccess ? ` Transaction Succesful !` : ""}
       </div>
     </>

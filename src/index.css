@@ -158,7 +158,13 @@ h4 {
 .connect-container {
   min-width: 170px;
 }
-
+.mint-button-container > div {
+  background-color: var(--light-blue-op);
+  width: 50px;
+}
+.mint-button-container:nth-child(1) {
+  background-color: red;
+}
 .mint-button {
   background-color: var(--light-blue);
   color: var(--black);
@@ -173,10 +179,27 @@ h4 {
 .mint-button:hover svg {
   fill: var(--white);
 }
+.error-box {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: min-content;
+  background-color: var(--light-blue-op);
+  padding: 0 15px;
+  border-radius: 5px;
+}
 .counter-button {
   font-size: larger;
   max-width: 50px;
-  margin: 0 25px;
+  margin: 0 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  transition: all 0.4s;
+}
+.counter-button:hover {
+  cursor: pointer;
+  color: var(--black);
+  background-color: var(--light-blue);
 }
 .loading,
 .icon-color {
@@ -256,6 +279,10 @@ h4 {
   font-weight: 900;
   color: var(--white);
 }
+.fbig {
+  font-size: clamp(24px, 0.5vh + 1rem, 10vh);
+  font-weight: 400;
+}
 .fstandard {
   font-size: large;
   font-weight: 700;
@@ -320,6 +347,14 @@ h4 {
 .fill-white:hover {
   cursor: pointer;
   scale: 1.2;
+}
+
+.color-green {
+  color: rgb(6, 171, 6);
+}
+.color-red {
+  margin-right: 5px;
+  color: red;
 }
 /* HEADER ----------------------------------------------- */
 .header-container {

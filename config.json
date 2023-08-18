@@ -2,8 +2,8 @@
   "baseGoerli": 84531,
   "base": 8453,
   "preferredChainId": 84531,
-  "activeMintingClass": "public",
-  "activeFunctionName": "publicMint",
+  "activeMintingClass": "whitelist",
+  "activeFunctionName": "whitelistMint",
   "contractAddress": "0x536045f8B002C44b13983026564Bb50F79b9c9d5",
   "abi": [
     {

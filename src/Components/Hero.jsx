@@ -19,9 +19,7 @@ const Hero = () => {
           translateY={[-20, 10]}
         >
           <div className="hero-main h100 flex-col ">
-            <div className="hero-text fstrong">
-              Limited edition Rock specially designed for Base chain
-            </div>
+            <div className="hero-text fstrong">Mint Is Live !</div>
             <MintBox />
           </div>
         </Parallax>
