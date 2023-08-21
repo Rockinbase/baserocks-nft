@@ -19,7 +19,7 @@ const Hero = () => {
           translateY={[-20, 10]}
         >
           <div className="hero-main h100 flex-col ">
-            <div className="hero-text fstrong">Mint Is Live !</div>
+            <div className="hero-text fstrong">Mint is Live !</div>
             <MintBox />
           </div>
         </Parallax>

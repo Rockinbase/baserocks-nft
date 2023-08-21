@@ -31,7 +31,10 @@ const app = initializeApp(firebaseConfig);
 const Mint = () => {
   const [proof, setProof] = useState("");
   const [error, setError] = useState("");
-  const [mintCount, setMintCount] = useState(1);
+
+  const [mintCount, setMintCount] = useState(
+    AppConfig.activeMintingClass === "og" ? 3 : "whitelist" ? 2 : 1
+  );
 
   const { address, isConnecting, isDisconnected, isConnected } = useAccount();
 
