@@ -29,95 +29,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const Mint = () => {
-  const [proof, setProof] = useState("");
+  const [proofOg, setProofOg] = useState("");
+  const [proofWl, setProofWl] = useState("");
   const [error, setError] = useState("");
 
-  const [mintCount, setMintCount] = useState(
-    AppConfig.activeMintingClass === "og" ? 3 : "whitelist" ? 2 : 1
-  );
+  const [mintCount, setMintCount] = useState(1);
 
   const { address, isConnecting, isDisconnected, isConnected } = useAccount();
 
-  const firebase = (address) => {
+  const firebaseOg = (address) => {
     const db = getDatabase();
 
-    const reference = ref(
-      db,
-      `/${AppConfig.activeMintingClass}Proofs/${address}`
-    );
+    const reference = ref(db, `/ogProofs/${address}`);
     onValue(reference, (snapshot) => {
       const data = snapshot.val();
 
-      if (data) setProof(data);
+      if (data) setProofOg(data);
     });
   };
+  const firebaseWl = (address) => {
+    const db = getDatabase();
 
+    const reference = ref(db, `/whitelistProofs/${address}`);
+    onValue(reference, (snapshot) => {
+      const data = snapshot.val();
+
+      if (data) setProofWl(data);
+    });
+  };
   //   track address change and get proofs
   useEffect(() => {
-    firebase(address);
+    firebaseOg(address);
+    firebaseWl(address);
   }, [address]);
-
-  //   Read If minting active
-  const {
-    data: mintingStatus,
-    isError: isMintingStatusError,
-    isLoading: isMintingStatusLoading,
-  } = useContractRead({
-    address: AppConfig.contractAddress,
-    abi: AppConfig.abi,
-    functionName: `${AppConfig.activeMintingClass}Enabled`,
-    watch: true,
-  });
-  const {
-    data: maxPerClass,
-    isError: isMaxPerClassError,
-    isLoading: isMaxPerClassLoading,
-  } = useContractRead({
-    address: AppConfig.contractAddress,
-    abi: AppConfig.abi,
-    functionName: `maxPer${
-      AppConfig.activeMintingClass == "whitelist"
-        ? "Wl"
-        : AppConfig.activeMintingClass.charAt(0).toUpperCase() +
-          AppConfig.activeMintingClass.slice(1)
-    }`,
-  });
-
-  //   Read Mint Price
-  const {
-    data: price,
-    isError: isPriceError,
-    isLoading: isPriceLoading,
-  } = useContractRead({
-    address: AppConfig.contractAddress,
-    abi: AppConfig.abi,
-    functionName: `${AppConfig.activeMintingClass}Price`,
-  });
-
-  // minting tx
-  const { config } = usePrepareContractWrite({
-    address: AppConfig.contractAddress,
-    abi: AppConfig.abi,
-    functionName: AppConfig.activeFunctionName,
-    args:
-      AppConfig.activeMintingClass == "public"
-        ? [mintCount]
-        : [[...proof], mintCount],
-    value: BigInt(isPriceLoading ? "" : price) * BigInt(mintCount),
-    onError(error) {
-      setError(error.message);
-    },
-  });
-
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
-  // Track tx
-  const {
-    data: watchTx,
-    isError: isWaitTxError,
-    isLoading: isWaitTxLoading,
-  } = useWaitForTransaction({
-    hash: data?.hash,
-  });
 
   //   Cut error message string
   function cutString(inputString) {
@@ -135,8 +79,127 @@ const Mint = () => {
       return inputString;
     }
   }
-  const renderMintButton = () => {
-    if (!mintingStatus) {
+
+  //   Read If wl minting active
+  const {
+    data: mintingStatusWl,
+    isError: isWlMintingStatusError,
+    isLoading: isWlMintingStatusLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `whitelistEnabled`,
+    watch: true,
+  });
+  //   Read If og minting active
+  const {
+    data: mintingStatusOg,
+    isError: isOgMintingStatusError,
+    isLoading: isOgMintingStatusLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `ogEnabled`,
+    watch: true,
+  });
+  //   Read If public minting active
+  const {
+    data: mintingStatusPublic,
+    isError: isPublicMintingStatusError,
+    isLoading: isPublicMintingStatusLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `publicEnabled`,
+    watch: true,
+  });
+  // max Per Wl user
+  const {
+    data: maxPerWl,
+    isError: isMaxPerWlError,
+    isLoading: isMaxPerWlLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `maxPerWl`,
+  });
+
+  // max Per OG user
+  const {
+    data: maxPerOg,
+    isError: isMaxPerOgError,
+    isLoading: isMaxPerOgLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `maxPerOg`,
+  });
+  // max Per pub user
+  const {
+    data: maxPerPublic,
+    isError: isMaxPerPublicError,
+    isLoading: isMaxPerPublicLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `maxPerPublic`,
+  });
+
+  //   Read Mint Price wl
+  const {
+    data: priceWl,
+    isError: isPriceWlError,
+    isLoading: isPriceWlLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `whitelistPrice`,
+  });
+  //   read mint price OG
+  const {
+    data: priceOg,
+    isError: isPriceOgError,
+    isLoading: isPriceOgLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `ogPrice`,
+  });
+  //   read mint price PUBLIC
+  const {
+    data: pricePublic,
+    isError: isPricePublicError,
+    isLoading: isPricePublicLoading,
+  } = useContractRead({
+    address: AppConfig.contractAddress,
+    abi: AppConfig.abi,
+    functionName: `publicPrice`,
+  });
+
+  // -------------------------------------------------
+  // minting tx OG
+  const ogMint = () => {
+    const { config: config } = usePrepareContractWrite({
+      address: AppConfig.contractAddress,
+      abi: AppConfig.abi,
+      functionName: "ogMint",
+      args: [[...proofOg], mintCount],
+      value: BigInt(isPriceOgLoading ? 0 : priceOg) * BigInt(mintCount),
+      onError(error) {
+        setError(error.message);
+      },
+    });
+    const { data, isLoading, isSuccess, write } = useContractWrite(config);
+    // Track tx
+    const {
+      data: watchTx,
+      isError: isWaitTxError,
+      isLoading: isWaitTxLoading,
+    } = useWaitForTransaction({
+      hash: data?.hash,
+    });
+
+    if (!mintingStatusOg) {
       return (
         <button disabled={true} className="mint-button">
           Soon !
@@ -145,8 +208,8 @@ const Mint = () => {
     }
     if (
       isLoading ||
-      isMintingStatusLoading ||
-      isPriceLoading ||
+      isOgMintingStatusLoading ||
+      isPriceOgLoading ||
       isWaitTxLoading
     ) {
       return (
@@ -155,10 +218,10 @@ const Mint = () => {
         </button>
       );
     }
-    if (!proof && AppConfig.activeMintingClass != "public") {
+    if (!proofOg) {
       return (
         <button disabled={true} className="mint-button">
-          {` Not ${AppConfig.activeMintingClass.toUpperCase()}`}
+          {` Not OG`}
         </button>
       );
     } else {
@@ -167,25 +230,163 @@ const Mint = () => {
           <button onClick={() => write?.()} className="mint-button">
             Mint
           </button>
+          <div className="error-box fstandard">
+            {error ? `${cutString(error)}` : ""}
+            {watchTx?.status == "reverted"
+              ? "⚠️ Error While Minting !"
+              : ""}{" "}
+            {isSuccess ? ` Transaction Succesful !` : ""}
+          </div>
         </>
       );
     }
   };
 
-  //   useEffect(() => {}), [isLoading];
+  const whitelistMint = () => {
+    const { config: config } = usePrepareContractWrite({
+      address: AppConfig.contractAddress,
+      abi: AppConfig.abi,
+      functionName: "whitelistMint",
+      args: [[...proofWl], mintCount],
+      value: BigInt(isPriceWlLoading ? 0 : priceWl) * BigInt(mintCount),
+      onError(error) {
+        setError(error.message);
+      },
+    });
+    const { data, isLoading, isSuccess, write } = useContractWrite(config);
+    // Track tx
+    const {
+      data: watchTx,
+      isError: isWaitTxError,
+      isLoading: isWaitTxLoading,
+    } = useWaitForTransaction({
+      hash: data?.hash,
+    });
+
+    if (!mintingStatusWl) {
+      return (
+        <button disabled={true} className="mint-button">
+          Soon !
+        </button>
+      );
+    }
+    if (
+      isLoading ||
+      isWlMintingStatusLoading ||
+      isPriceWlLoading ||
+      isWaitTxLoading
+    ) {
+      return (
+        <button disabled={true} className="mint-button">
+          <LoadingIcon />
+        </button>
+      );
+    }
+    if (!proofWl) {
+      return (
+        <button disabled={true} className="mint-button">
+          {` Not WL`}
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <button onClick={() => write?.()} className="mint-button">
+            Mint
+          </button>
+          <div className="error-box fstandard">
+            {error ? `${cutString(error)}` : ""}
+            {watchTx?.status == "reverted"
+              ? "⚠️ Error While Minting !"
+              : ""}{" "}
+            {isSuccess ? ` Transaction Succesful !` : ""}
+          </div>
+        </>
+      );
+    }
+  };
+
+  // PUBLIC MINT TX
+  const publicMint = () => {
+    const { config: config } = usePrepareContractWrite({
+      address: AppConfig.contractAddress,
+      abi: AppConfig.abi,
+      functionName: "publicMint",
+      args: [mintCount],
+      value: BigInt(isPricePublicLoading ? 0 : pricePublic) * BigInt(mintCount),
+      onError(error) {
+        setError(error.message);
+      },
+    });
+    const { data, isLoading, isSuccess, write } = useContractWrite(config);
+    // Track tx
+    const {
+      data: watchTx,
+      isError: isWaitTxError,
+      isLoading: isWaitTxLoading,
+    } = useWaitForTransaction({
+      hash: data?.hash,
+    });
+
+    if (!mintingStatusPublic) {
+      return (
+        <button disabled={true} className="mint-button">
+          Soon !
+        </button>
+      );
+    }
+    if (
+      isLoading ||
+      isPublicMintingStatusLoading ||
+      isPricePublicLoading ||
+      isWaitTxLoading
+    ) {
+      return (
+        <button disabled={true} className="mint-button">
+          <LoadingIcon />
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <button onClick={() => write?.()} className="mint-button">
+            Mint
+          </button>
+          <div className="error-box fstandard">
+            {error ? `${cutString(error)}` : ""}
+            {watchTx?.status == "reverted"
+              ? "⚠️ Error While Minting !"
+              : ""}{" "}
+            {isSuccess ? ` Transaction Succesful !` : ""}
+          </div>
+        </>
+      );
+    }
+  };
+
   const handleMintCount = (newMintCount) => {
-    if (newMintCount > 0 && newMintCount <= maxPerClass) {
+    const max = proofOg ? maxPerOg : proofWl ? maxPerWl : 100;
+
+    if (newMintCount > 0 && newMintCount <= max) {
       setMintCount(newMintCount);
     }
   };
 
   return (
     <>
+      {mintingStatusPublic ? (
+        <>{publicMint()}</>
+      ) : proofOg ? (
+        <>{ogMint()}</>
+      ) : proofWl ? (
+        <>{whitelistMint()}</>
+      ) : (
+        <>{publicMint()}</>
+      )}
       <div
         className="flex mint-button-container
-    "
+      "
       >
-        {renderMintButton()}
         <button
           onClick={() => handleMintCount(mintCount + 1)}
           className="counter-button"
@@ -200,17 +401,15 @@ const Mint = () => {
           -
         </button>
       </div>
-      {proof ? (
-        <div className="color-green">{`You are the ${AppConfig.activeMintingClass.toUpperCase()}`}</div>
+      {mintingStatusPublic ? (
+        ""
+      ) : proofOg || proofWl ? (
+        <div className="color-green">{`You are ${
+          proofOg ? "OG" : proofWl ? "Whitelisted" : "Not whitelisted or OG :/"
+        }`}</div>
       ) : (
-        <div className="color-red">{`You are not on ${AppConfig.activeMintingClass.toUpperCase()} :/`}</div>
+        ""
       )}
-      <div className="error-box fstandard">
-        <span className="color-red">⚠️</span>
-        {error ? `${cutString(error)}` : ""}
-        {watchTx?.status == "reverted" ? "⚠️ Error While Minting !" : ""}{" "}
-        {isSuccess ? ` Transaction Succesful !` : ""}
-      </div>
     </>
   );
 };

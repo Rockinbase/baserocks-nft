@@ -2,8 +2,8 @@
   "baseGoerli": 84531,
   "base": 8453,
   "preferredChainId": 8453,
-  "activeMintingClass": "whitelist",
-  "activeFunctionName": "whitelistMint",
+  "activeMintingClass": "og",
+  "activeFunctionName": "ogMint",
   "contractAddress": "0x76563eA8fd9F4820698c8C14f32279B9758aFe6C",
   "abi": [
     { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },

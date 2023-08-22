@@ -191,7 +191,7 @@ h4 {
 .counter-button {
   font-size: larger;
   max-width: 50px;
-  margin: 0 10px;
+
   background-color: var(--blue);
   color: var(--white);
   transition: all 0.4s;
