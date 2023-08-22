@@ -405,7 +405,11 @@ const Mint = () => {
         ""
       ) : proofOg || proofWl ? (
         <div className="color-green">{`You are ${
-          proofOg ? "OG" : proofWl ? "Whitelisted" : "Not whitelisted or OG :/"
+          proofOg
+            ? "OG, you can mint up to 3 Rocks !"
+            : proofWl
+            ? "Whitelisted, you can mint up to 2 Rocks !"
+            : "Not whitelisted or OG :/"
         }`}</div>
       ) : (
         ""
