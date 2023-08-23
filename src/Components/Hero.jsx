@@ -1,5 +1,6 @@
 import HeroRock from "../assets/hero-rock.webp";
 import { Parallax } from "react-scroll-parallax";
+import { ReactComponent as OpenseaIcon } from "../assets/Icons/Opensea.svg";
 const Hero = () => {
   return (
     <>
@@ -21,7 +22,14 @@ const Hero = () => {
             <div className="hero-text fstrong">
               Limited edition Rock specially designed for Base chain
             </div>
-            <button className="mint-button">Opensea</button>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://opensea.io/collection/rockinbase"
+              className="mint-button"
+            >
+              Opensea ! <OpenseaIcon />
+            </a>
           </div>
         </Parallax>
         <Parallax
